@@ -1,0 +1,16 @@
+<div class="sidebar-layout">
+  <nav class="sidebar" [class.expanded]="hovered" (mouseenter)="hovered = true" (mouseleave)="hovered = false">
+    <a routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon>
+      <span class="label">Dashboard</span>
+    </a>
+    <a routerLink="/rule-builder" routerLinkActive="active">
+      <mat-icon>build</mat-icon>
+      <span class="label">Rule Builder</span>
+    </a>
+  </nav>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

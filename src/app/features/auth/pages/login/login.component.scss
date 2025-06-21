@@ -1,0 +1,75 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: #0f172a;
+}
+
+/* Left side: navy background */
+.login-left {
+  flex: 1;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b); // deep navy gradient
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* White login box on navy bg */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #ffffff; // white card
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #1e293b;
+
+  h2 {
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+  }
+}
+
+/* Right side: clean branding */
+.login-right {
+  flex: 1;
+  background-color: #f8fafc; // light gray/white background
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .branding {
+    text-align: center;
+
+    .rulebot-logo {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0f172a;
+;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #64748b;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/* Divider between left and right */
+.divider {
+  width: 2px;
+  background-color: #e2e8f0;
+}
+
+/* Form fields */
+.full-width {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.mat-form-field-infix input {
+  color: #1e293b !important; // dark input text inside white card
+}

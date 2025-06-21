@@ -1,0 +1,47 @@
+<div class="login-container">
+  <!-- Left Side: Login Form -->
+  <div class="login-left">
+    <mat-card class="login-card">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width dark-field">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Enter your email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width dark-field">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="full-width">Log In</button>
+      </form>
+    </mat-card>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Right Side: Branding -->
+  <div class="login-right">
+    <div class="branding">
+      <h1 class="rulebot-logo">Rulebot</h1>
+      <p class="tagline">Automation. Intelligence. Precision.</p>
+    </div>
+  </div>
+</div>
