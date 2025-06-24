@@ -36,8 +36,8 @@ export class LoginComponent {
 
   onSubmit() {
   if (this.loginForm.valid) {
-    console.log(this.loginForm.value);
-    this.router.navigate(['/dashboard']); // 👈 redirect after login
+    localStorage.setItem('token', 'rulebot-auth');
+    this.router.navigate(['/dashboard']);
   }
 }
 

@@ -1,0 +1,81 @@
+.dialog-container {
+  padding: 24px;
+  min-width: 380px;
+  max-width: 100%;
+}
+
+.dialog-title {
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  flex: 1;
+}
+
+mat-dialog-actions {
+  padding-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+::ng-deep .mat-select-value-text {
+  display: flex;
+  align-items: center;
+}
+
+// Hide pill only in selected value display
+::ng-deep .mat-select-value-text .pill-icon {
+  display: none;
+}
+
+// Allow pill in dropdown only
+.process-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+}
+
+.color-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0;
+    background: none;
+  }
+}

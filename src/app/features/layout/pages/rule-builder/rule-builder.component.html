@@ -1,1 +1,96 @@
-<p>rule-builder works!</p>
+<section class="rule-builder-page">
+  <!-- Toolbar -->
+  <mat-toolbar class="toolbar" color="primary">
+    <span class="toolbar-title">Rule Builder</span>
+    <span class="spacer"></span>
+    <button mat-icon-button aria-label="Add Rule" (click)="openAddRuleDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Edit Rule">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Delete Rule">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+     <div class="toolbar-divider"></div>
+     
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Apply Rule"
+      (click)="applyRule(null, true)">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="rule-builder-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <button
+        mat-button
+        class="sidebar-btn"
+        [color]="selectedRuleType === 1 ? 'accent' : undefined"
+        [ngClass]="{ 'active-btn': selectedRuleType === 1 }"
+        (click)="selectRuleType(1)">
+        Rule #1
+      </button>
+
+      <div class="sidebar-divider"></div>
+
+      <button
+        mat-button
+        class="sidebar-btn"
+        [color]="selectedRuleType === 2 ? 'accent' : undefined"
+        [ngClass]="{ 'active-btn': selectedRuleType === 2 }"
+        (click)="selectRuleType(2)">
+        Rule #2
+      </button>
+
+      <div class="sidebar-divider"></div>
+
+      <button
+        mat-button
+        class="sidebar-btn"
+        [color]="selectedRuleType === 3 ? 'accent' : undefined"
+        [ngClass]="{ 'active-btn': selectedRuleType === 3 }"
+        (click)="selectRuleType(3)">
+        Rule #3
+      </button>
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Rules List -->
+      <div class="rules-list" *ngIf="rules.length > 0; else noRules">
+        <mat-card
+          class="rule-card"
+          *ngFor="let rule of rules"
+          (dblclick)="openAddRuleDialog(rule)">
+          <div class="rule-content">
+            <div class="rule-title">{{ getDisplayName(rule) }}</div>
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Apply Rule"
+              (click)="applyRule(rule)">
+              <mat-icon>play_arrow</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- No rules -->
+      <ng-template #noRules>
+        <div class="no-rules">
+          <p>No rules yet.</p>
+          <button mat-raised-button color="primary" (click)="openAddRuleDialog()">
+            <mat-icon>add</mat-icon>
+            Add Rule
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

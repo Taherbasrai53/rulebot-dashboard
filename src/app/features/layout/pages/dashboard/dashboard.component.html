@@ -1,1 +1,83 @@
-<h1>Dashboard</h1>
+<mat-toolbar class="dashboard-toolbar" color="white">
+  <div class="toolbar-left">
+    <mat-form-field appearance="outline" class="toolbar-dropdown">
+      <mat-label>Process</mat-label>
+      <mat-select
+    [formControl]="selectedProcess"
+    [compareWith]="compareById"
+    (selectionChange)="onProcessChange($event.value)"
+  >
+
+    <!-- Trigger content -->
+    <mat-select-trigger>
+      {{ selectedProcess.value?.processName || '' }}
+    </mat-select-trigger>
+
+    <!-- Option template -->
+    <mat-option *ngFor="let process of processes" [value]="process">
+        <span class="process-option">
+            <span class="pill-icon" *ngIf="process.processType">{{ process.processType }}</span>
+            {{ process.processName }}
+        </span>
+    </mat-option>
+  </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="toolbar-dropdown">
+      <mat-label>Pages</mat-label>
+      <mat-select [formControl]="selectedPages" multiple>
+        <mat-option *ngFor="let page of pages" [value]="page">{{ page }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="toolbar-right">
+    <button mat-flat-button color="primary" (click)="fetchComplianceData()">Load</button>
+  </div>
+</mat-toolbar>
+
+
+<div class="dashboard-card-container">
+  <div class="dashboard-card-container">
+  <mat-card class="dashboard-card">
+    <mat-card-title>
+      <mat-icon>donut_large</mat-icon> Stage Compliance - {{ currentPageData?.page }}
+    </mat-card-title>
+
+    <div class="dashboard-chart-wrapper">
+      <button mat-mini-fab color="primary" (click)="goToPrevPage()" [disabled]="!hasPrev">
+  <mat-icon>chevron_left</mat-icon>
+</button>
+
+      <canvas #stageChart baseChart [data]="stageComplianceData" [labels]="chartLabels" [type]="'pie'"></canvas>
+
+      <button mat-mini-fab color="primary" (click)="goToNextPage()" [disabled]="!hasNext">
+  <mat-icon>chevron_right</mat-icon>
+</button>
+    </div>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <mat-card-title>
+      <mat-icon>donut_large</mat-icon> Data Item Compliance - {{ currentPageData?.page }}
+    </mat-card-title>
+
+    <div class="dashboard-chart-wrapper">
+      <button mat-mini-fab color="primary" (click)="goToPrevPage()" [disabled]="!hasPrev">
+        <mat-icon>chevron_left</mat-icon>
+        </button>
+
+
+      <canvas #dataItemChart baseChart [data]="dataItemComplianceData" [labels]="chartLabels" [type]="'pie'"></canvas>
+
+      <button mat-mini-fab color="primary" (click)="goToNextPage()" [disabled]="!hasNext">
+  <mat-icon>chevron_right</mat-icon>
+</button>
+    </div>
+  </mat-card>
+</div>
+
+
+</div>

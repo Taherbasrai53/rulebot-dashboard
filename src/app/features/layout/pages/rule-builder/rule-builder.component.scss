@@ -1,0 +1,147 @@
+.rule-builder-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  background-color: #f8fafc;
+
+  // Toolbar at the top
+  .toolbar {
+    display: flex;
+    align-items: center;
+    background-color: #e2e8f0;
+    padding: 0.5rem 1.5rem;
+    z-index: 10;
+    border-bottom: 1px solid #cbd5e1;
+    border-radius: 0;
+
+    .toolbar-divider {
+      width: 1px;
+      height: 24px;
+      background-color: #64748b;
+      margin: 0 0.75rem;
+    }
+  }
+
+  .toolbar-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  // Container with sidebar + main content
+  .rule-builder-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 64px); // subtract toolbar height
+    overflow: hidden;
+  }
+
+  // Sidebar on the left
+  .sidebar {
+    width: 200px;
+    background: #f8fafc;
+    padding: 1rem;
+    border-right: 1px solid #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .sidebar-btn {
+      justify-content: flex-start;
+      text-align: left;
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      color: #1e293b;
+      transition: background 0.2s ease;
+    }
+
+    .active-btn {
+      background-color: #e0f2fe;
+      color: #0284c7;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background-color: #cbd5e1;
+      margin: 0.25rem 0;
+      width: 100%;
+    }
+  }
+
+  // Right section: Rule content
+  .main-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    .rules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rule-card {
+      padding: 1rem;
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      transition: box-shadow 0.2s ease;
+
+      &:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+      }
+
+      .rule-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .rule-title {
+          font-size: 16px;
+          font-weight: 500;
+          color: #0f172a;
+        }
+      }
+    }
+
+    .no-rules {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      color: #64748b;
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        font-weight: 500;
+        border-radius: 20px;
+        border: 1px solid #cbd5e1;
+        color: #0f172a;
+        background-color: #f8fafc;
+      }
+    }
+  }
+}

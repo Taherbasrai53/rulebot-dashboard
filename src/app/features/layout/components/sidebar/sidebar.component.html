@@ -1,4 +1,5 @@
 <div class="sidebar-layout">
+  <!-- Sidebar (left) -->
   <nav class="sidebar" [class.expanded]="hovered" (mouseenter)="hovered = true" (mouseleave)="hovered = false">
     <a routerLink="/dashboard" routerLinkActive="active">
       <mat-icon>dashboard</mat-icon>
@@ -10,7 +11,35 @@
     </a>
   </nav>
 
+  <!-- Main Content (right) -->
   <div class="main-content">
-    <router-outlet></router-outlet>
+    <!-- ✅ Topbar inside the main content area -->
+    <header class="topbar">
+  <!-- ✅ Left: RuleBot Logo -->
+  <div class="logo">
+    <mat-icon class="logo-icon">smart_toy</mat-icon>
+    <span class="logo-text">RuleBot</span>
+  </div>
+
+  <!-- Spacer pushes profile to the right -->
+  <div class="spacer"></div>
+
+  <!-- ✅ Right: Profile icon with menu -->
+  <button mat-icon-button class="profile-button" [matMenuTriggerFor]="menu">
+  <mat-icon class="avatar-icon">account_circle</mat-icon>
+</button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</header>
+
+    <!-- Page content -->
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
